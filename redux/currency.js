@@ -1,0 +1,64 @@
+import { createSlice } from '@reduxjs/toolkit';
+
+const slice = createSlice({
+  name: 'currency',
+  initialState: {
+    rates: {},
+    symbols: {},
+    timestamp: 0,
+    options: [],
+    base: 'EUR',
+    fromInput: 0,
+    toInput: 0,
+    fromExchange: 1,
+    toExchange: 1,
+  },
+  reducers: {
+    updateState: (state, action) => {
+      const rates = action.payload.rates;
+      const symbols = action.payload.symbols;
+      state.rates = rates.rates;
+      state.options = [...Object.keys(rates.rates)];
+      state.timestamp = new Date().toLocaleDateString();
+      state.base = rates.base;
+      state.symbols = symbols.symbols;
+    },
+    handlefrom: (state, action) => {
+      state.fromInput = action.payload;
+      state.toInput = (
+        (action.payload * state.toExchange) /
+        state.fromExchange
+      ).toFixed(3);
+    },
+    handleto: (state, action) => {
+      state.toInput = action.payload;
+      state.fromInput = (
+        (action.payload * state.fromExchange) /
+        state.toExchange
+      ).toFixed(3);
+    },
+    handlefromExchange: (state, action) => {
+      state.fromExchange = action.payload;
+      state.toInput = (
+        (state.fromInput * state.toExchange) /
+        action.payload
+      ).toFixed(3);
+    },
+    handletoExchange: (state, action) => {
+      state.toExchange = action.payload;
+      state.fromInput = (
+        (state.toInput * action.payload) /
+        state.fromExchange
+      ).toFixed(3);
+    },
+  },
+});
+
+export const {
+  updateState,
+  handlefrom,
+  handleto,
+  handlefromExchange,
+  handletoExchange,
+} = slice.actions;
+export default slice.reducer;

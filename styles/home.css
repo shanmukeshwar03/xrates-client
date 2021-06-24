@@ -1,0 +1,13 @@
+.home__container {
+  display: grid;
+  height: 100vh;
+  width: 100vw;
+  grid-template-columns: 3fr 2fr;
+}
+
+@media screen and (max-width: 1200px) {
+  .home__container {
+    display: flex;
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "currency-converter",
+  "version": "1.0.0",
+  "description": "currency converter online",
+  "main": "index.js",
+  "keywords": [
+    "currency",
+    "exchange",
+    "rates",
+    "money",
+    "converter"
+  ],
+  "scripts": {
+    "dev": "next dev",
+    "start": "next start",
+    "build": "next build",
+    "export": "next export"
+  },
+  "author": "shanmukeshwar",
+  "license": "ISC",
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.6.0",
+    "axios": "^0.21.1",
+    "next": "^10.2.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.4"
+  }
+}
