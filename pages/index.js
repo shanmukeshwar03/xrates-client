@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { updateState } from 'redux/currency'
 import { useDispatch } from 'react-redux'
-import { handlefrom } from 'redux/currency'
 import axios from 'utils/axios'
 import Sidebar from 'components/Sidebar'
 import Loading from 'components/Loading'
@@ -18,7 +17,6 @@ const Home = () => {
       const rates = (await axios.get('/rates')).data
       const symbols = (await axios.get('/symbols')).data
       dispatch(updateState({ rates, symbols }))
-      dispatch(handlefrom(1))
       setloading(false)
     } catch (error) {
       router.replace('/404')

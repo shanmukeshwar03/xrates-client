@@ -8,8 +8,8 @@ const slice = createSlice({
     timestamp: 0,
     options: [],
     base: 'EUR',
-    fromInput: 0,
-    toInput: 0,
+    fromInput: 1,
+    toInput: 1,
     fromExchange: 1,
     toExchange: 1,
   },
@@ -19,11 +19,12 @@ const slice = createSlice({
       const symbols = JSON.parse(action.payload.symbols)
       state.rates = rates.rates
       state.options = [...Object.keys(rates.rates)]
-      state.timestamp = action.payload.rates.date
+      state.timestamp = rates.date
       state.base = rates.base
       state.symbols = symbols.symbols
-      state.toExchange = rates.rates['USD']
+      state.toExchange = rates.rates['EUR']
       state.fromExchange = rates.rates['INR']
+      state.toInput = rates.rates['INR']
     },
     handlefrom: (state, action) => {
       state.fromInput = action.payload

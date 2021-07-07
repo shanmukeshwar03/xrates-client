@@ -10,8 +10,8 @@ import {
 const Dashboard = () => {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
-  const [fromSymbol, setfromSymbol] = useState('INR');
-  const [toSymbol, settoSymbol] = useState('USD');
+  const [fromSymbol, setfromSymbol] = useState('EUR');
+  const [toSymbol, settoSymbol] = useState('INR');
 
   const handlefromInput = (event) => {
     dispatch(handlefrom(event.target.value));
