@@ -19,8 +19,7 @@ const Home = () => {
       dispatch(updateState({ rates, symbols }));
       setloading(false);
     } catch (error) {
-      console.log(error);
-      // router.replace("/404");
+      router.replace("/404");
     }
   };
 
