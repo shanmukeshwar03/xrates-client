@@ -1,33 +1,34 @@
-import { useEffect, useState } from 'react'
-import { updateState } from 'redux/currency'
-import { useDispatch } from 'react-redux'
-import axios from 'utils/axios'
-import Sidebar from 'components/Sidebar'
-import Loading from 'components/Loading'
-import Head from 'next/head'
-import Dashboard from 'components/Dashboard'
-import router from 'next/router'
+import { useEffect, useState } from "react";
+import { updateState } from "redux/currency";
+import { useDispatch } from "react-redux";
+import axios from "axios";
+import Sidebar from "components/Sidebar";
+import Loading from "components/Loading";
+import Head from "next/head";
+import Dashboard from "components/Dashboard";
+import router from "next/router";
 
 const Home = () => {
-  const dispatch = useDispatch()
-  const [loading, setloading] = useState(true)
+  const dispatch = useDispatch();
+  const [loading, setloading] = useState(true);
 
   const fetchdata = async () => {
     try {
-      const rates = (await axios.get('/rates')).data
-      const symbols = (await axios.get('/symbols')).data
-      dispatch(updateState({ rates, symbols }))
-      setloading(false)
+      const rates = (await axios.get("/rates")).data;
+      const symbols = (await axios.get("/symbols")).data;
+      dispatch(updateState({ rates, symbols }));
+      setloading(false);
     } catch (error) {
-      router.replace('/404')
+      console.log(error);
+      // router.replace("/404");
     }
-  }
+  };
 
   useEffect(() => {
-    fetchdata()
-  }, [])
+    fetchdata();
+  }, []);
 
-  if (loading) return <Loading />
+  if (loading) return <Loading />;
 
   return (
     <div className="home__container">
@@ -62,7 +63,7 @@ const Home = () => {
       <Dashboard />
       <Sidebar />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
