@@ -1,5 +1,5 @@
 module.exports = {
   env: {
-    HOST_URL: process.env.HOST_URL,
+    API_ENDPOINT: process.env.API_ENDPOINT,
   },
 };
